@@ -39,4 +39,18 @@ if __name__ == '__main__':
     import os
 from werkzeug.serving import run_simple
 app.run(debug=True)
+import os
+import threading
+from werkzeug.serving import run_simple
+
+def run_app():
+    if os.environ.get('WERKZEUG_RUN_MAIN') != 'true':
+        run_simple('localhost', 5000, app, use_debugger=True, use_reloader=False)
+    else:
+        app.run(debug=True)
+
+if __name__ == '__main__':
+    t = threading.Thread(target=run_app)
+    t.start()
+
 
