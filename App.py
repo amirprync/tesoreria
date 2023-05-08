@@ -38,6 +38,5 @@ def index():
 if __name__ == '__main__':
     import os
 from werkzeug.serving import run_simple
-    else:
         app.run(debug=True)
 
