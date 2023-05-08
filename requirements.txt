@@ -5,5 +5,4 @@ lxml
 xlrd
 openpyxl
 numpy==1.23.1
-flask
 base64
