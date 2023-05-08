@@ -36,4 +36,12 @@ def index():
     '''
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+from werkzeug.serving import run_simple
+
+if __name__ == '__main__':
+    if os.environ.get('WERKZEUG_RUN_MAIN') != 'true':
+        run_simple('localhost', 5000, app, use_debugger=True, use_reloader=False)
+    else:
+        app.run(debug=True)
+
