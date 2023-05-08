@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import base64
 from io import StringIO
 
 def process_file(file):
@@ -16,16 +17,16 @@ def process_file(file):
         output.write(registro)
 
     output.seek(0)
-    return output
+    return output.getvalue()
+
+def get_download_link(text, filename):
+    b64 = base64.b64encode(text.encode()).decode()
+    return f'<a href="data:text/plain;base64,{b64}" download="{filename}">Descargar archivo TXT</a>'
 
 st.title('Generador de Archivo TXT desde Excel')
 uploaded_file = st.file_uploader("Sube tu archivo Excel", type=['xlsx'])
 
 if uploaded_file is not None:
     processed_file = process_file(uploaded_file)
-    st.download_button(
-        label="Descargar archivo TXT",
-        data=processed_file,
-        file_name="salida.txt",
-        mime="text/plain",
-    )
+    download_link = get_download_link(processed_file, 'salida.txt')
+    st.markdown(download_link, unsafe_allow_html=True)
