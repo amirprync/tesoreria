@@ -23,7 +23,7 @@ def get_download_link(text, filename):
     b64 = base64.b64encode(text.encode()).decode()
     return f'<a href="data:text/plain;base64,{b64}" download="{filename}">Descargar archivo TXT</a>'
 
-st.title('Generador de archivo de reinversion para tesoreria')
+st.title('Generador de archivo de reinversion DOLARES para tesoreria')
 uploaded_file = st.file_uploader("Sube tu archivo Excel", type=['xlsx'])
 
 if uploaded_file is not None:
