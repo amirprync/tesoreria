@@ -13,7 +13,7 @@ def process_file(file):
         nombre = str(fila['NOMBRE'])
         importe = str(fila['IMPORTE'])
 
-        registro = f'DL2;300100000000468;{cbu};;{cuit};{nombre};{importe};VAR;N;N;TRANSF COHEN;\n'
+        registro = f'DR2;900100000102553;{cbu};;{cuit};{nombre};{importe};VAR;N;N;TRANSF COHEN;\n'
         output.write(registro)
 
     output.seek(0)
