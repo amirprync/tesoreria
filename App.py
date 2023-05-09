@@ -8,7 +8,7 @@ def process_file(file):
     output = StringIO()
 
     for _, fila in df.iterrows():
-        cbu = str(int(fila['CBU']))
+        cbu = str(fila['CBU'])
         cuit = str(int(fila['CUIT']))
         nombre = str(fila['NOMBRE'])
         importe = str(fila['IMPORTE'])
