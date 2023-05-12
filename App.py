@@ -23,8 +23,15 @@ st.title('Generador de archivos de reinversión para tesorería')
 uploaded_file = st.file_uploader("Sube tu archivo Excel", type=['xlsx'])
 
 if uploaded_file is not None:
-    # ...
-    # (El contenido previo de este bloque no ha cambiado)
+    st.subheader('Generador de archivo de reinversion DÓLARES para tesorería')
+    processed_file = process_file(uploaded_file, pesos=False)
+    download_link = get_download_link(processed_file, 'salida_dolares.txt')
+    st.markdown(download_link, unsafe_allow_html=True)
+
+    st.subheader('Generador de archivo de reinversion PESOS para tesorería')
+    processed_file_pesos = process_file(uploaded_file, pesos=True)
+    download_link_pesos = get_download_link(processed_file_pesos, 'salida_pesos.txt')
+    st.markdown(download_link_pesos, unsafe_allow_html=True)
 
     # Nueva sección: Reinversión Títulos
     st.subheader("Reinversión Títulos")
@@ -33,6 +40,14 @@ if uploaded_file is not None:
     if reinv:
         # El código adicional proporcionado empieza aquí
         columnas = ['Comitente Número','Moneda','Importe']
+        # ...
+        # (El resto del código adicional se mantiene sin cambios)
+
+        ################################ EXCEL PREPARACION #############################
+        
+        # ...
+        # (Continúa con el código adicional proporcionado sin cambios)
+
         tablero = pd.read_excel(reinv, usecols=columnas, engine='openpyxl')
         tablero_xls = pd.read_excel(reinv,engine='openpyxl')
         comit = tablero['Comitente Número']
